@@ -460,9 +460,9 @@ namespace GitHub.Runner.Listener.Configuration
             agent.Version = BuildConstants.RunnerPackage.Version;
             agent.OSDescription = RuntimeInformation.OSDescription;
 
-            agent.Labels.Add("self-hosted");
-            agent.Labels.Add(VarUtil.OS);
-            agent.Labels.Add(VarUtil.OSArchitecture);
+            //agent.Labels.Add("self-hosted");
+            //agent.Labels.Add(VarUtil.OS);
+            //agent.Labels.Add(VarUtil.OSArchitecture);
 	    agent.Labels.Add("dvc-cml");
 
             return agent;
@@ -481,9 +481,9 @@ namespace GitHub.Runner.Listener.Configuration
                 OSDescription = RuntimeInformation.OSDescription,
             };
 
-            agent.Labels.Add("self-hosted");
-            agent.Labels.Add(VarUtil.OS);
-            agent.Labels.Add(VarUtil.OSArchitecture);
+            //agent.Labels.Add("self-hosted");
+            //agent.Labels.Add(VarUtil.OS);
+            //agent.Labels.Add(VarUtil.OSArchitecture);
             agent.Labels.Add("dvc-cml");
 
             return agent;
