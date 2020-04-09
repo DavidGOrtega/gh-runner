@@ -471,7 +471,7 @@ namespace GitHub.Runner.Listener.Configuration
 
         private void AddEnvLabels(string name)
         {
-            string[] labels = Environment.GetEnvironmentVariable(name).labelsStr.Split(',');
+            string[] labels = Environment.GetEnvironmentVariable(name).Split(',');
             
             foreach(string label in labels) 
                 agent.Labels.Add(label);
