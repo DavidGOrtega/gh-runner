@@ -463,8 +463,22 @@ namespace GitHub.Runner.Listener.Configuration
             agent.Labels.Add("self-hosted");
             agent.Labels.Add(VarUtil.OS);
             agent.Labels.Add(VarUtil.OSArchitecture);
+	        
+            AddEnvLabels(agent);
 
             return agent;
+        }
+
+        private void AddEnvLabels(TaskAgent agent)
+        {
+            var strLabels = Environment.GetEnvironmentVariable("RUNNER_LABELS");
+            if (!String.IsNullOrEmpty(strLabels)) 
+            {
+                string[] labels = strLabels.Split(',');
+            
+                foreach(string label in labels) 
+                    agent.Labels.Add(label);
+            }
         }
 
         private TaskAgent CreateNewAgent(string agentName, RSAParameters publicKey)
@@ -483,6 +497,8 @@ namespace GitHub.Runner.Listener.Configuration
             agent.Labels.Add("self-hosted");
             agent.Labels.Add(VarUtil.OS);
             agent.Labels.Add(VarUtil.OSArchitecture);
+            
+            AddEnvLabels(agent);
 
             return agent;
         }
