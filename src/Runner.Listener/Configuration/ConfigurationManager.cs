@@ -464,7 +464,7 @@ namespace GitHub.Runner.Listener.Configuration
             agent.Labels.Add(VarUtil.OS);
             agent.Labels.Add(VarUtil.OSArchitecture);
 	        
-            string[] labels = Environment.GetEnvironmentVariable(name).Split(',');
+            string[] labels = Environment.GetEnvironmentVariable("RUNNER_LABELS").Split(',');
             
             foreach(string label in labels) 
                 agent.Labels.Add(label);
@@ -489,7 +489,7 @@ namespace GitHub.Runner.Listener.Configuration
             agent.Labels.Add(VarUtil.OS);
             agent.Labels.Add(VarUtil.OSArchitecture);
             
-            string[] labels = Environment.GetEnvironmentVariable(name).Split(',');
+            string[] labels = Environment.GetEnvironmentVariable("RUNNER_LABELS").Split(',');
             
             foreach(string label in labels) 
                 agent.Labels.Add(label);
