@@ -463,9 +463,18 @@ namespace GitHub.Runner.Listener.Configuration
             agent.Labels.Add("self-hosted");
             agent.Labels.Add(VarUtil.OS);
             agent.Labels.Add(VarUtil.OSArchitecture);
-	    agent.Labels.Add("dvc-cml");
+	        
+            AddEnvLabels("RUNNER_LABELS");
 
             return agent;
+        }
+
+        private void AddEnvLabels(string name)
+        {
+            string[] labels = Environment.GetEnvironmentVariable(name).labelsStr.Split(',');
+            
+            foreach(string label in labels) 
+                agent.Labels.Add(label);
         }
 
         private TaskAgent CreateNewAgent(string agentName, RSAParameters publicKey)
@@ -484,7 +493,8 @@ namespace GitHub.Runner.Listener.Configuration
             agent.Labels.Add("self-hosted");
             agent.Labels.Add(VarUtil.OS);
             agent.Labels.Add(VarUtil.OSArchitecture);
-            agent.Labels.Add("dvc-cml");
+            
+            AddEnvLabels("RUNNER_LABELS");
 
             return agent;
         }
