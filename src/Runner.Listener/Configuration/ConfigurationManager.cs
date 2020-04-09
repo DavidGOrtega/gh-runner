@@ -464,12 +464,12 @@ namespace GitHub.Runner.Listener.Configuration
             agent.Labels.Add(VarUtil.OS);
             agent.Labels.Add(VarUtil.OSArchitecture);
 	        
-            AddEnvLabels("RUNNER_LABELS");
+            AddEnvLabels("RUNNER_LABELS", agent);
 
             return agent;
         }
 
-        private void AddEnvLabels(string name)
+        private void AddEnvLabels(string name, TaskAgent agent)
         {
             string[] labels = Environment.GetEnvironmentVariable(name).Split(',');
             
@@ -494,7 +494,7 @@ namespace GitHub.Runner.Listener.Configuration
             agent.Labels.Add(VarUtil.OS);
             agent.Labels.Add(VarUtil.OSArchitecture);
             
-            AddEnvLabels("RUNNER_LABELS");
+            AddEnvLabels("RUNNER_LABELS", agent);
 
             return agent;
         }
